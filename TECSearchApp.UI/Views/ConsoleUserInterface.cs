@@ -16,11 +16,10 @@ public class ConsoleUserInterface : IUserInterface
         Console.WriteLine($"2. {SearchType.Elev}");
         Console.WriteLine($"3. {SearchType.Fag}");
 
-        ConsoleKeyInfo key = Console.ReadKey(true);
-
-        if (char.IsDigit(key.KeyChar) && int.TryParse(key.KeyChar.ToString(), out int searchType) && searchType >= 1 && searchType <= 3)
+        string input = Console.ReadKey(true).KeyChar.ToString();
+        if (Enum.TryParse<SearchType>(input, out SearchType searchType))
         {
-            return searchType;
+            return (int)searchType;
         }
         else
         {
