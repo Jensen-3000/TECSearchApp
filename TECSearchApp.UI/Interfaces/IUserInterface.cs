@@ -6,4 +6,5 @@ public interface IUserInterface
     string GetSearchTerm();
     void DisplayCourses(IEnumerable<Semester> courses, bool hasResults, SearchType searchType);
     void DisplayInvalidInputMessage();
+    void DisplayAvailableCourses(IEnumerable<Semester> semesters);
 }

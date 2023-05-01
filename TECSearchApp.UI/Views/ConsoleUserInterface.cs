@@ -100,4 +100,16 @@ public class ConsoleUserInterface : IUserInterface
         Console.Clear();
         Console.WriteLine("Ugyldigt input. Prøv igen.\n");
     }
+
+    public void DisplayAvailableCourses(IEnumerable<Semester> semesters)
+    {
+        var distinctCourses = semesters.Select(s => s.CourseName).Distinct();
+        
+        Console.WriteLine($"\nListe af {SearchType.Fag} du kan søge på:\n");
+        foreach (var course in distinctCourses)
+        {
+            Console.WriteLine($"{course}");
+        }
+        Console.WriteLine();
+    }
 }

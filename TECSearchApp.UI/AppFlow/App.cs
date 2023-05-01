@@ -7,11 +7,13 @@ public class App
 {
     private readonly ISemesterService _courseService;
     private readonly IUserInterface _userInterface;
+    private readonly IEnumerable<Semester> _allCouses;
 
     public App(ISemesterService courseService, IUserInterface userInterface)
     {
         _courseService = courseService;
         _userInterface = userInterface;
+        _allCouses = _courseService.GetCoursesFromData();
     }
 
     /// <summary>
@@ -25,9 +27,14 @@ public class App
 
             if (searchType >= 1 && searchType <= 3)
             {
-                string searchTerm = _userInterface.GetSearchTerm();
+                // If search type is 3 (for courses), display available courses first
+                if (searchType == 3)
+                {
+                    _userInterface.DisplayAvailableCourses(_allCouses);
+                }
 
                 // Validate search term
+                string searchTerm = _userInterface.GetSearchTerm();
                 if (string.IsNullOrWhiteSpace(searchTerm))
                 {
                     _userInterface.DisplayInvalidInputMessage();
