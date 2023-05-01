@@ -53,7 +53,11 @@ public class ConsoleUserInterface : IUserInterface
             foreach (Semester course in courses)
             {
                 Console.WriteLine($"{courseNumber} ud af {totalCourses}");
-                Console.WriteLine($"{SearchType.Fag}: {course.CourseName}");
+
+                if (searchType != SearchType.Fag)
+                {
+                    Console.WriteLine($"{SearchType.Fag}: {course.CourseName}");
+                }
 
                 if (searchType != SearchType.Lærer)
                 {
@@ -82,8 +86,6 @@ public class ConsoleUserInterface : IUserInterface
             DisplayNoResultsFoundInSearch();
         }
     }
-
-
 
     private void DisplayNoResultsFoundInSearch()
     {
