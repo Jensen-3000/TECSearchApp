@@ -54,7 +54,11 @@ public class ConsoleUserInterface : IUserInterface
             {
                 Console.WriteLine($"{courseNumber} ud af {totalCourses}");
                 Console.WriteLine($"{SearchType.Fag}: {course.CourseName}");
-                Console.WriteLine($"{SearchType.Lærer}: {course.Teacher.FullName}");
+
+                if (searchType != SearchType.Lærer)
+                {
+                    Console.WriteLine($"{SearchType.Lærer}: {course.Teacher.FullName}");
+                }
 
                 if (searchType != SearchType.Elev)
                 {
@@ -78,6 +82,7 @@ public class ConsoleUserInterface : IUserInterface
             DisplayNoResultsFoundInSearch();
         }
     }
+
 
 
     private void DisplayNoResultsFoundInSearch()
