@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33620.401
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TECSearchApp.UI", "TECSearchApp.UI\TECSearchApp.UI.csproj", "{F4EF7D84-98BD-4336-8E02-6DFDCF3BB0D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TECSearchApp.Logic", "TECSearchApp.Logic\TECSearchApp.Logic.csproj", "{970A596A-F210-4ECF-A405-107B724D0CC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F4EF7D84-98BD-4336-8E02-6DFDCF3BB0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4EF7D84-98BD-4336-8E02-6DFDCF3BB0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4EF7D84-98BD-4336-8E02-6DFDCF3BB0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970A596A-F210-4ECF-A405-107B724D0CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970A596A-F210-4ECF-A405-107B724D0CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970A596A-F210-4ECF-A405-107B724D0CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970A596A-F210-4ECF-A405-107B724D0CC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
