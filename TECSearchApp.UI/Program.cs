@@ -3,7 +3,7 @@ try
 {
     // Create a new ServiceCollection and register required dependencies
     serviceProvider = new ServiceCollection()
-        .AddSingleton<IDataProvider, DefaultDataProvider>() // TestCourseDataProvider | DefaultCourseDataProvider
+        .AddSingleton<IDataProvider, DefaultDataProvider>() // TestDataProvider | DefaultDataProvider
         .AddSingleton<ISemesterService, SemesterService>()
         .AddSingleton<IUserInterface, ConsoleUserInterface>()
         .AddTransient<App>()
