@@ -1,4 +1,4 @@
-﻿namespace TECSearchApp.Logic.Data;
+﻿namespace TECSearchApp.Logic.Data.DataBase;
 
 public class DefaultDataProvider : IDataProvider
 {

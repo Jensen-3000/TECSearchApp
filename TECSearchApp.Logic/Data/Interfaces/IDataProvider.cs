@@ -1,4 +1,4 @@
-﻿namespace TECSearchApp.Logic.Interfaces;
+﻿namespace TECSearchApp.Logic.Data.Interfaces;
 
 public interface IDataProvider
 {

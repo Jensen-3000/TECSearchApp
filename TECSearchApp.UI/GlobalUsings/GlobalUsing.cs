@@ -1,9 +1,7 @@
 ﻿global using Microsoft.Extensions.DependencyInjection;
 global using TECSearchApp.Logic.Data;
+global using TECSearchApp.Logic.Data.DataBase;
+global using TECSearchApp.Logic.Data.Interfaces;
 global using TECSearchApp.Logic.Enums;
-global using TECSearchApp.Logic.Interfaces;
-global using TECSearchApp.Logic.Model;
-global using TECSearchApp.Logic.Services;
-global using TECSearchApp.UI.AppFlow;
-global using TECSearchApp.UI.Interfaces;
-global using TECSearchApp.UI.Views;
+global using TECSearchApp.Logic.Models;
+global using TECSearchApp.UI.UI;

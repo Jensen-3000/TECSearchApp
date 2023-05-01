@@ -15,4 +15,8 @@
     <ProjectReference Include="..\TECSearchApp.Logic\TECSearchApp.Logic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>

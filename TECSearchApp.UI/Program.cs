@@ -1,20 +1,16 @@
-﻿IServiceProvider serviceProvider;
-try
-{
-    // Create a new ServiceCollection and register required dependencies
-    serviceProvider = new ServiceCollection()
-        .AddSingleton<IDataProvider, DefaultDataProvider>() // TestDataProvider | DefaultDataProvider
-        .AddSingleton<ISemesterService, SemesterService>()
-        .AddSingleton<IUserInterface, ConsoleUserInterface>()
-        .AddTransient<App>()
-        .BuildServiceProvider();
-}
-catch (Exception ex)
-{
-    // Catch any exceptions that may occur during the creation of the service provider
-    Console.WriteLine($"Der skete en fejl: {ex.Message}");
-    return;
-}
+﻿IServiceProvider serviceProvider = new ServiceCollection()
+    .AddSingleton<IDataProvider, DefaultDataProvider>() // TestDataProvider | DefaultDataProvider, Could be data from other H1, H2
+    .AddSingleton<ICourseDataLoader, CourseDataLoader>()
+    .AddSingleton<ICourseSearch, CourseSearch>()
+    .AddSingleton<ICourseManager, CourseManager>()
+    .AddSingleton<UserInterface>()
+    .BuildServiceProvider();
 
-// Get the App service from the service provider and run it
-serviceProvider.GetService<App>().Run();
+IDataProvider? dataProvider = serviceProvider.GetService<IDataProvider>();
+string[][] courseData = dataProvider.GetCourseData();
+
+ICourseManager? courseManager = serviceProvider.GetService<ICourseManager>();
+courseManager.LoadData(courseData);
+
+UserInterface? userInterface = serviceProvider.GetService<UserInterface>();
+userInterface.RunMenuLoop();

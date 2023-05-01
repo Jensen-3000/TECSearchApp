@@ -1,3 +1,3 @@
-﻿global using TECSearchApp.Logic.Enums;
-global using TECSearchApp.Logic.Interfaces;
-global using TECSearchApp.Logic.Model;
+﻿global using TECSearchApp.Logic.Data.Interfaces;
+global using TECSearchApp.Logic.Models;
+global using TECSearchApp.Logic.Models.Interface;
