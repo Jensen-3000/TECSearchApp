@@ -16,9 +16,9 @@ public class ConsoleUserInterface : IUserInterface
         Console.WriteLine($"2. {SearchType.Elev}");
         Console.WriteLine($"3. {SearchType.Fag}");
 
-        string input = Console.ReadLine();
+        ConsoleKeyInfo key = Console.ReadKey(true);
 
-        if (int.TryParse(input, out int searchType) && searchType >= 1 && searchType <= 3)
+        if (char.IsDigit(key.KeyChar) && int.TryParse(key.KeyChar.ToString(), out int searchType) && searchType >= 1 && searchType <= 3)
         {
             return searchType;
         }
