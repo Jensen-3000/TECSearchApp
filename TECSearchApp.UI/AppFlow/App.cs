@@ -34,7 +34,7 @@ public class App
                 }
 
                 // Validate search term
-                string searchTerm = _userInterface.GetSearchTerm();
+                string searchTerm = _userInterface.GetSearchTerm((SearchType)searchType);
                 if (string.IsNullOrWhiteSpace(searchTerm))
                 {
                     _userInterface.DisplayInvalidInputMessage();

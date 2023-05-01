@@ -31,9 +31,9 @@ public class ConsoleUserInterface : IUserInterface
     /// Prompts the user to enter a search term and returns their input.
     /// </summary>
     /// <returns>The user's search term.</returns>
-    public string GetSearchTerm()
+    public string GetSearchTerm(SearchType searchType)
     {
-        Console.WriteLine("\nIndtast søgeord:");
+        Console.WriteLine($"\nIndtast søgeord for {searchType}:");
         return Console.ReadLine().Trim();
     }
 
