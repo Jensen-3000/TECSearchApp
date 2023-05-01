@@ -19,7 +19,7 @@ public class SemesterService : ISemesterService
     /// <summary>
     /// Retrieves course data and converts it into a list of semesters.
     /// </summary>
-    /// <returns>A list of semesters representing the retrieved course data.</returns>
+    /// <returns>A list sorted data of course, teachers and student names.</returns>
     public List<Semester> GetCoursesFromData()
     {
         string[][] courseData = _dataProvider.GetCourseData();
@@ -40,11 +40,18 @@ public class SemesterService : ISemesterService
                 course.Students.Add(new Student { FullName = courseData[i][j] });
             }
 
+            // Sort the students in this course by name
+            course.Students = course.Students.OrderBy(s => s.FullName).ToList();
+
             courses.Add(course);
         }
 
+        // Sort the courses by course name
+        courses = courses.OrderBy(c => c.CourseName).ToList();
+
         return courses;
     }
+
 
     /// <summary>
     /// Searches for semesters based on the given search type and term.
