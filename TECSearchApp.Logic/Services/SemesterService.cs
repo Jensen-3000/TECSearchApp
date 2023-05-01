@@ -16,33 +16,19 @@ public class SemesterService : ISemesterService
         _dataProvider = dataProvider;
     }
 
+    #region HandleData
     /// <summary>
     /// Retrieves course data and converts it into a list of semesters.
     /// </summary>
-    /// <returns>A list sorted data of course, teachers and student names.</returns>
+    /// <returns>A list of Semester objects, sorted by course name.</returns>
     public List<Semester> GetCoursesFromData()
     {
         string[][] courseData = _dataProvider.GetCourseData();
-
         List<Semester> courses = new List<Semester>();
 
         for (int i = 0; i < courseData.Length; i++)
         {
-            Semester course = new H1
-            {
-                CourseName = courseData[i][0],
-                Teacher = new Teacher { FullName = courseData[i][1] },
-                Students = new List<Student>()
-            };
-
-            for (int j = 2; j < courseData[i].Length; j++)
-            {
-                course.Students.Add(new Student { FullName = courseData[i][j] });
-            }
-
-            // Sort the students in this course by name
-            course.Students = course.Students.OrderBy(s => s.FullName).ToList();
-
+            Semester course = CreateCourse(courseData[i]);
             courses.Add(course);
         }
 
@@ -52,7 +38,46 @@ public class SemesterService : ISemesterService
         return courses;
     }
 
+    /// <summary>
+    /// Creates a new Semester object from an array of course data.
+    /// </summary>
+    /// <param name="courseData">Array of course data: 
+    /// [0] - course name, [1] - teacher name, [2..n] - student names.</param>
+    /// <returns>A Semester with course name, teacher, and students.</returns>
+    private Semester CreateCourse(string[] courseData)
+    {
+        Semester course = new H1
+        {
+            CourseName = courseData[0],
+            Teacher = new Teacher { FullName = courseData[1] },
+            Students = CreateStudents(courseData)
+        };
 
+        return course;
+    }
+
+    /// <summary>
+    /// Creates a list of Student objects from an array of course data.
+    /// </summary>
+    /// <param name="courseData">An array where the elements from the third position onwards are the students' full names.</param>
+    /// <returns>A list of Student objects, sorted by full name.</returns>
+    private List<Student> CreateStudents(string[] courseData)
+    {
+        List<Student> students = new List<Student>();
+        for (int j = 2; j < courseData.Length; j++)
+        {
+            students.Add(new Student { FullName = courseData[j] });
+        }
+
+        // Sort the students in this course by name
+        students = students.OrderBy(s => s.FullName).ToList();
+
+        return students;
+    }
+    #endregion
+
+
+    #region SearchMethods
     /// <summary>
     /// Searches for semesters based on the given search type and term.
     /// </summary>
@@ -107,4 +132,5 @@ public class SemesterService : ISemesterService
         List<Semester> courses = GetCoursesFromData();
         return courses.Where(c => string.Equals(c.CourseName, courseName, StringComparison.OrdinalIgnoreCase));
     }
+    #endregion
 }

@@ -75,7 +75,7 @@ public class ConsoleUserInterface : IUserInterface
         }
     }
 
-    private static void DisplayNoResultsFoundInSearch()
+    private void DisplayNoResultsFoundInSearch()
     {
         Console.Clear();
         Console.WriteLine("Ingen resultater fundet.\n");
