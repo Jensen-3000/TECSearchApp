@@ -39,10 +39,12 @@ public class ConsoleUserInterface : IUserInterface
     }
 
     /// <summary>
-    /// Displays a list of courses to the console.
+    /// Displays a list of courses to the console, 
+    /// adjusting the display based on the type of search performed.
     /// </summary>
     /// <param name="courses">The list of courses to display.</param>
     /// <param name="hasResults">Whether the search returned any results.</param>
+    /// <param name="searchType">The type of search that was performed. This determines what information is displayed for each course.</param>
     public void DisplayCourses(IEnumerable<Semester> courses, bool hasResults, SearchType searchType)
     {
         if (hasResults)
