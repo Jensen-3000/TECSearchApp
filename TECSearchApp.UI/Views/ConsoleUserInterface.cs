@@ -43,7 +43,7 @@ public class ConsoleUserInterface : IUserInterface
     /// </summary>
     /// <param name="courses">The list of courses to display.</param>
     /// <param name="hasResults">Whether the search returned any results.</param>
-    public void DisplayCourses(IEnumerable<Semester> courses, bool hasResults)
+    public void DisplayCourses(IEnumerable<Semester> courses, bool hasResults, SearchType searchType)
     {
         if (hasResults)
         {
@@ -55,14 +55,18 @@ public class ConsoleUserInterface : IUserInterface
                 Console.WriteLine($"{courseNumber} ud af {totalCourses}");
                 Console.WriteLine($"{SearchType.Fag}: {course.CourseName}");
                 Console.WriteLine($"{SearchType.Lærer}: {course.Teacher.FullName}");
-                Console.WriteLine($"{SearchType.Elev}er:");
 
-                int studentNumber = 1;
-                foreach (Student studentName in course.Students)
+                if (searchType != SearchType.Elev)
                 {
-                    Console.WriteLine($"  {studentNumber}. {studentName.FullName}");
-                    studentNumber++;
+                    Console.WriteLine($"{SearchType.Elev}er:");
+                    int studentNumber = 1;
+                    foreach (Student studentName in course.Students)
+                    {
+                        Console.WriteLine($"  {studentNumber}. {studentName.FullName}");
+                        studentNumber++;
+                    }
                 }
+
                 Console.WriteLine();
                 Console.WriteLine(new string('-', 40)); // Adding separator for clarity
                 Console.WriteLine();
@@ -74,6 +78,7 @@ public class ConsoleUserInterface : IUserInterface
             DisplayNoResultsFoundInSearch();
         }
     }
+
 
     private void DisplayNoResultsFoundInSearch()
     {

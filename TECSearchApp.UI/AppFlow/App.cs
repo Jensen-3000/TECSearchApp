@@ -36,7 +36,7 @@ public class App
 
                 IEnumerable<Semester> courses = _courseService.Search((SearchType)searchType, searchTerm);
                 bool hasResults = courses.Any();
-                _userInterface.DisplayCourses(courses, hasResults);
+                _userInterface.DisplayCourses(courses, hasResults, (SearchType)searchType);
             }
             else
             {
